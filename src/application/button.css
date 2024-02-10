@@ -1,0 +1,27 @@
+
+.close{
+	-fx-background-color:transparent;
+	-fx-text-fill: #dee4fa;
+}
+.SubmitBTN{
+	-fx-background-color:  #3885ff !important;
+	-fx-text-fill: #dee4fa;
+}
+
+.cadastrarBTN{
+	-fx-background-color : #31247e !important;
+	-fx-text-fill: #dee4fa;
+}
+
+.SubmitBTN:hover, .close:hover, .cadastrarBTN:hover{
+	-fx-background-color : #38d3ff !important;
+	-fx-text-fill: #31247e;
+}
+
+.SubmitBTN:active, .cadastrarBTN:active{
+	-fx-background-color : white !important;
+}
+
+.titleBar{
+	-fx-background-color : linear-gradient(to right top, #31247e, #4263e6);
+}

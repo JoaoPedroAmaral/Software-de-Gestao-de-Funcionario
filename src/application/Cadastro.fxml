@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" styleClass="areaCadastro" stylesheets="@Background.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CadastreseController">
+   <children>
+      <AnchorPane prefHeight="0.0" prefWidth="600.0" styleClass="titleBar" stylesheets="@button.css">
+         <children>
+            <Button fx:id="close" layoutX="528.0" layoutY="7.0" mnemonicParsing="false" onAction="#close" prefHeight="28.0" prefWidth="68.0" styleClass="close" stylesheets="@button.css" text="X" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Text fill="WHITE" layoutX="257.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Welcome" text="PsiMind" textAlignment="JUSTIFY" wrappingWidth="86.0">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Text fill="#31247e" layoutX="126.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtCadastro" text="Cadastro" textAlignment="CENTER" wrappingWidth="347.13671875">
+         <font>
+            <Font size="51.0" />
+         </font>
+      </Text>
+      <TextField fx:id="cadCod" layoutX="178.0" layoutY="173.0" onAction="#enter" prefHeight="25.0" prefWidth="245.0" promptText="Digite um codigo de até 6 numeros" styleClass="logCadastro" stylesheets="@application.css" />
+      <PasswordField fx:id="cadPassword" layoutX="177.0" layoutY="221.0" onAction="#enter" prefHeight="25.0" prefWidth="245.0" promptText="Crie uma Senha" styleClass="logSenha" stylesheets="@application.css" />
+      <PasswordField fx:id="cadPasswordRepeat" layoutX="177.0" layoutY="268.0" onAction="#enter" prefHeight="25.0" prefWidth="245.0" promptText="Repita a senha" styleClass="logSenha" stylesheets="@application.css" />
+      <Button fx:id="submit" layoutX="239.0" layoutY="317.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="43.0" prefWidth="121.0" styleClass="cadastrarBTN" stylesheets="@button.css" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Bold" size="12.0" />
+         </font>
+      </Button>
+      <Text layoutX="243.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versão 1.0 do software" />
+      <TextField fx:id="cadUser" layoutX="178.0" layoutY="125.0" onAction="#enter" prefHeight="25.0" prefWidth="245.0" promptText="Digite um Nome de Usuario" styleClass="logCadastro" stylesheets="@application.css" />
+      <Text fx:id="alert" fill="RED" layoutX="181.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="245.0">
+         <font>
+            <Font name="SansSerif Bold" size="12.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

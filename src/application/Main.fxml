@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLDocumentController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane id="Anchor_Login" depthTest="DISABLE" layoutX="273.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="307.0" styleClass="logBK" stylesheets="@Background.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text fill="WHITE" layoutX="119.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Login" text="Login">
+                     <font>
+                        <Font name="SansSerif Regular" size="36.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="login" cache="true" focusTraversable="false" layoutX="53.0" layoutY="220.0" onAction="#enter" prefHeight="26.0" prefWidth="220.0" promptText="Codigo de Login" style="-fx-background-color: #dee4fa;" />
+                  <PasswordField fx:id="senha" focusTraversable="false" layoutX="53.0" layoutY="275.0" onAction="#enter" prefHeight="26.0" prefWidth="220.0" promptText="Senha" style="-fx-background-color: #dee4fa;" />
+                  <Button fx:id="submit" layoutX="103.0" layoutY="356.0" mnemonicParsing="false" onAction="#login" prefHeight="33.0" prefWidth="121.0" styleClass="SubmitBTN" stylesheets="@button.css" text="Submit" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="SansSerif Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="close" layoutX="264.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" onMouseClicked="#close" prefHeight="33.0" prefWidth="55.0" styleClass="close" stylesheets="@button.css" text="X" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                     <font>
+                        <Font name="SansSerif Bold" size="10.0" />
+                     </font>
+                  </Button>
+                  <Text fx:id="alert" fill="RED" layoutX="58.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.0">
+                     <font>
+                        <Font name="SansSerif Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Hyperlink fx:id="cadastrese" layoutX="53.0" layoutY="321.0" onAction="#cadastrese" styleClass="cadastrese" stylesheets="@application.css" text="Não possui login? Cadastre-se" textFill="#dee4fa">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="296.0" styleClass="welcomeBK" stylesheets="@Background.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text fill="#31247e" layoutX="-9.0" layoutY="163.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Welcome" text="Welcome to" textAlignment="CENTER" wrappingWidth="296.0">
+                     <font>
+                        <Font name="SansSerif Bold" size="42.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="295.0" fitWidth="266.0" layoutX="6.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/icone_com_text.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

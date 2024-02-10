@@ -1,0 +1,30 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+@font-face {
+ 	src: url(../fonts/NeyagawaDemoRegular.ttf);
+}
+
+.Welcome, .Login{
+	-fx-font-weight:bold;
+}
+
+.Welcome, .txtCadastro{
+	-fx-font-family: "Neyagawa Demo";
+}
+
+.cadastrese:hover{
+	-fx-text-fill: #38d3ff;
+	-fx-underline: true;
+}
+
+.cadastrese{
+	-fx-text-fill: #dee4fa;
+}
+
+.logCadastro, .logSenha{
+	-fx-border-style:solid;
+	-fx-border-color: #31247e;
+}
+
+
+

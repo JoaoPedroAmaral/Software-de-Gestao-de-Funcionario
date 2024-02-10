@@ -1,0 +1,17 @@
+.welcomeBK, .logBK, .areaCadastro{
+	-fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.welcomeBK{
+	-fx-background-image: url("../img/Background_Login.png");
+}
+
+.logBK{
+		-fx-background-image: url("../img/Background_Login2.png");
+}
+
+.areaCadastro{
+	-fx-background-image: url("../img/background_cadastro.png");
+}
