@@ -13,7 +13,7 @@
 
 <StackPane prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLDocumentController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="550.0" prefWidth="601.0" styleClass="BK" stylesheets="@Background.css">
          <children>
             <AnchorPane id="Anchor_Login" depthTest="DISABLE" layoutX="273.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="307.0" styleClass="logBK" stylesheets="@Background.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -48,14 +48,14 @@
             </AnchorPane>
             <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="296.0" styleClass="welcomeBK" stylesheets="@Background.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Text fill="#31247e" layoutX="-9.0" layoutY="163.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Welcome" text="Welcome to" textAlignment="CENTER" wrappingWidth="296.0">
+                  <Text fill="#3552c8" layoutX="-9.0" layoutY="163.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Welcome" text="Welcome to" textAlignment="CENTER" wrappingWidth="296.0">
                      <font>
                         <Font name="SansSerif Bold" size="42.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="295.0" fitWidth="266.0" layoutX="6.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="275.0" fitWidth="274.0" layoutX="5.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true" styleClass="imgPsiMind">
                      <image>
-                        <Image url="@../img/icone_com_text.png" />
+                        <Image url="@../img/icone_com_text2.png" />
                      </image>
                   </ImageView>
                </children>

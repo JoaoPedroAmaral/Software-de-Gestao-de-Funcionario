@@ -100,7 +100,7 @@ public class CadastreseController implements Initializable {
         } else if (cadPassword.getText().equals(cadPasswordRepeat.getText())) {
             if(cadCod.getText().matches("[0-9]+") && cadCod.getText().length() == 6) {
             	try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo, true))) {
-                    writer.write(cadUser.getText() + "," + cadCod.getText() + "," + cadPassword.getText() + ":");
+                    writer.write(cadUser.getText() + "," + cadCod.getText() + "," + cadPassword.getText() +"," + "/img/profile.jpg" + "," +"^");
                     writer.newLine();
                     System.out.println("Cadastrado");
                     

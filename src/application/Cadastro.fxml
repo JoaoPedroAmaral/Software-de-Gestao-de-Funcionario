@@ -23,7 +23,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <Text fill="#31247e" layoutX="126.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtCadastro" text="Cadastro" textAlignment="CENTER" wrappingWidth="347.13671875">
+      <Text fill="#3552c8" layoutX="126.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtCadastro" text="Cadastro" textAlignment="CENTER" wrappingWidth="347.13671875">
          <font>
             <Font size="51.0" />
          </font>

@@ -11,12 +11,15 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,7 +28,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 
 public class FXMLDocumentController implements Initializable {
 
@@ -49,29 +51,32 @@ public class FXMLDocumentController implements Initializable {
 
 	private double x = 0;
 	private double y = 0;
-	 
+	
+	private String urlFoto;
+	
+	File inputFile = new File("usuarios.txt");
+	File tempFile = new File("temp.txt");
+
 	public void enter() {
-        // Adiciona um EventHandler para capturar o evento de tecla pressionada no campo senha
-        senha.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER) {
-                	login();
-                }
-            }
-        });
-        
-        login.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER) {
-                	login();
-                }
-            }
-        });
-    }
-	
-	
+		senha.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getCode() == KeyCode.ENTER) {
+					login();
+				}
+			}
+		});
+
+		login.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getCode() == KeyCode.ENTER) {
+					login();
+				}
+			}
+		});
+	}
+
 	public void cadastrese() {
 		submit.getScene().getWindow().hide();
 		Parent root;
@@ -83,7 +88,7 @@ public class FXMLDocumentController implements Initializable {
 
 			stage.setTitle("PsiMind");
 			stage.getIcons().add(new Image(getClass().getResourceAsStream("../img/icone.png")));
-			
+
 			root.setOnMousePressed((MouseEvent event) -> {
 				x = event.getSceneX();
 				y = event.getSceneY();
@@ -113,48 +118,126 @@ public class FXMLDocumentController implements Initializable {
 		}
 	}
 	
+	public String foto() {
+		 try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))){
+			 String word;
+            while ((word = reader.readLine()) != null) {
+                String[] linha = word.split("^");
+                for (int i = 0; i <= linha.length - 1; i++) {
+                    String[] partes = linha[i].split(",");
+                    if(partes[1].equals(login.getText()) && partes[2].equals(senha.getText())) {
+                     	 urlFoto = partes[3].toString();
+                     	 System.out.println(partes[0]);
+                    	 System.out.println(urlFoto);
+                      }
+                }
+            }
+            return urlFoto;
+		 } catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "/img/profile.jpg";
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "/img/profile.jpg";
+		}
+	}
+	
+	public boolean temFoto() {
+		try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))){
+               String word;
+               boolean verificar = true;         
+               while ((word = reader.readLine()) != null) {
+                   String[] linha = word.split("^");
+                   for (int i = 0; i <= linha.length - 1; i++) {
+                       String[] partes = linha[i].split(",");
+                       if(partes[3].equals("/img/profile.jpg") && partes[1].equals(login.getText())) {
+                    	   verificar = false;
+                       }
+                   }
+               }
+               return verificar;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return true;
+		}
+	}
+
+	public void logado() {
+		if (login.getText().isEmpty() || senha.getText().isEmpty()) {
+			alert.setText("Campos não prenchidos detectados! porfavor verifique se algum campo foi esquecido.");
+		} else {
+            try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+                 BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))){
+
+                String word;
+                while ((word = reader.readLine()) != null) {
+                    String[] linha = word.split("^");
+                    for (int i = 0; i <= linha.length - 1; i++) {
+                        String[] partes = linha[i].split(",");
+                        if (partes[1].equals(login.getText()) && partes[2].equals(senha.getText())) {
+                        	System.out.println(temFoto());
+                           if(temFoto()) {
+                        	   writer.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + foto() + "," + "-"  + "," + "^");
+                           }else {
+                        	   writer.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + "/img/profile.jpg" + "," + "-" + "," + "^");
+                           }
+                        } else {
+                        	if(temFoto()) {
+                         	   writer.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + foto() + "," + "x" + ","+ "^");
+                            }else {
+                         	   writer.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + "/img/profile.jpg" + "," + "x" + "," + "^");
+                            }
+                        }
+
+                        writer.newLine();
+                    }
+                }
+            } catch (IOException e) {
+                alert.setText("Erro! Falha ao realizar o login");
+            }
+            }
+	}
+	
 	public void login() {
 		try {
-			login.getText();
-			senha.getText();
-
 			if (login.getText().isEmpty() || senha.getText().isEmpty()) {
 				alert.setText("Campos não prenchidos detectados! porfavor verifique se algum campo foi esquecido.");
 			} else {
-				try (BufferedReader reader = new BufferedReader(new FileReader("usuarios.txt"))) {
+				File inputFile = new File("usuarios.txt");
+				
+				try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))){
 					String word;
 					while ((word = reader.readLine()) != null) {
-						String[] linha= word.split(":");
-						for(int i = 0; i <= linha.length-1; i++) {
+						String[] linha = word.split("^");
+						for (int i = 0; i <= linha.length - 1; i++) {
 							String[] partes = linha[i].split(",");
 							if (partes[1].equals(login.getText()) && partes[2].equals(senha.getText())) {
+								logado();
+								
 								submit.getScene().getWindow().hide();
 								Parent root = FXMLLoader.load(getClass().getResource("Software.fxml"));
 								Stage stage = new Stage();
-								 Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-								Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
+								Scene scene = new Scene(root, 1280, 700);
 
-								root.setOnMousePressed((MouseEvent event) -> {
-									x = event.getSceneX();
-									y = event.getSceneY();
-								});
-
-								root.setOnMouseDragged((MouseEvent event) -> {
-									stage.setX(event.getScreenX() - x);
-									stage.setY(event.getScreenY() - y);
-								});
+								stage.setFullScreen(true);
 
 								stage.setTitle("PsiMind");
 								stage.getIcons().add(new Image(getClass().getResourceAsStream("../img/icone.png")));
-								
+
 								stage.initStyle(StageStyle.TRANSPARENT);
 								stage.setScene(scene);
 								stage.show();
-
-							} else {
-								alert.setText("Login e Senha incorretos ou não existentes");
+								
 							}
 						}
+						alert.setText("Login e Senha incorretos ou não existentes");
 					}
 
 				} catch (IOException e) {
@@ -174,6 +257,5 @@ public class FXMLDocumentController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO
-		
 	}
 }

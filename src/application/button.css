@@ -1,7 +1,7 @@
 
 .close{
 	-fx-background-color:transparent;
-	-fx-text-fill: #dee4fa;
+	-fx-text-fill: #38d3ff;
 }
 .SubmitBTN{
 	-fx-background-color:  #3885ff !important;
@@ -9,7 +9,7 @@
 }
 
 .cadastrarBTN{
-	-fx-background-color : #31247e !important;
+	-fx-background-color : #3552c8 !important;
 	-fx-text-fill: #dee4fa;
 }
 
@@ -25,3 +25,11 @@
 .titleBar{
 	-fx-background-color : linear-gradient(to right top, #31247e, #4263e6);
 }
+
+ .maxmize{
+ 		-fx-background-color: transparent;
+ }
+ 
+ .maxmize:hover{
+ 	-fx-background-color: #38d3ff !important;
+ }

@@ -1,21 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SoftwareController">
-   <children>
-      <AnchorPane prefHeight="400.0" prefWidth="146.0">
-         <children>
-            <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane layoutX="200.0" prefHeight="400.0" prefWidth="401.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane prefHeight="39.0" prefWidth="600.0" style="-fx-background-color: blue;">
-               <children>
-                  <Button layoutX="542.0" layoutY="5.0" mnemonicParsing="false" text="Button" />
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-   </children>
+	<children>
+		<AnchorPane prefHeight="400.0" prefWidth="146.0">
+			<children>
+				<AnchorPane layoutY="33.0" prefHeight="367.0" prefWidth="219.0" style="-fx-background-color: #3885ff;" stylesheets="@Background.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="33.0">
+					<children>
+                  <ImageView fx:id="imgPerfil" fitHeight="107.0" fitWidth="139.0" layoutX="40.0" layoutY="4.0" pickOnBounds="true" styleClass="img" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="4.0" />
+                  <Circle fx:id="mudarIMG" fill="DODGERBLUE" layoutX="110.0" layoutY="61.0" onMouseClicked="#mudarIMG" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" style="-fx-fill: transparent;" styleClass="circleIMG" />
+						<Text fx:id="namePsicologo" layoutX="54.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="110.97454833984375" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.02545166015625" AnchorPane.topAnchor="116.05078125">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Text>
+					</children>
+				</AnchorPane>
+				<AnchorPane layoutX="219.0" layoutY="33.0" prefHeight="367.0" prefWidth="381.0" style="-fx-background-color: #dee4fa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
+				<AnchorPane fx:id="barSoft" onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" prefHeight="33.0" prefWidth="600.0" styleClass="titleBar" stylesheets="@button.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+					<children>
+						<Button fx:id="close" layoutX="542.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="43.0" styleClass="close" stylesheets="@button.css" text="X" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
+							<font>
+								<Font name="System Bold" size="12.0" />
+							</font>
+						</Button>
+						<Button fx:id="maximize" layoutX="507.0" layoutY="4.0" mnemonicParsing="false" onAction="#maximize" prefHeight="25.0" prefWidth="43.0" styleClass="maxmize" stylesheets="@button.css" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="4.0">
+							<graphic>
+								<ImageView fitHeight="17.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" styleClass="iconM">
+									<image>
+										<Image url="@../img/maximizar_hover.png" />
+									</image>
+								</ImageView>
+							</graphic>
+						</Button>
+						<Button fx:id="minimize" layoutX="461.0" layoutY="4.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="25.0" prefWidth="43.0" styleClass="maxmize" stylesheets="@button.css" AnchorPane.rightAnchor="96.0" AnchorPane.topAnchor="4.0">
+							<graphic>
+								<ImageView fitHeight="17.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" styleClass="iconM">
+									<image>
+										<Image url="@../img/minimize.png" />
+									</image>
+								</ImageView>
+							</graphic>
+						</Button>
+						<ImageView fitHeight="25.0" fitWidth="31.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="4.0">
+							<image>
+								<Image url="@../img/icone.png" />
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+			</children>
+		</AnchorPane>
+	</children>
 </StackPane>

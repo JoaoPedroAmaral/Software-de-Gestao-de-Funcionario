@@ -1,17 +1,18 @@
-.welcomeBK, .logBK, .areaCadastro{
+.BK, .areaCadastro{
 	-fx-background-size: cover;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
 
-.welcomeBK{
-	-fx-background-image: url("../img/Background_Login.png");
-}
-
-.logBK{
-		-fx-background-image: url("../img/Background_Login2.png");
+.BK{
+	-fx-background-image: url("../img/BK2.png");
 }
 
 .areaCadastro{
 	-fx-background-image: url("../img/background_cadastro.png");
+}
+
+.circleIMG:hover{
+	-fx-fill: rgba(0, 0, 0, 0.5) !important;
+	-fx-cursor: hand !important;
 }
