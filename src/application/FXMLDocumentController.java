@@ -127,8 +127,7 @@ public class FXMLDocumentController implements Initializable {
                     String[] partes = linha[i].split(",");
                     if(partes[1].equals(login.getText()) && partes[2].equals(senha.getText())) {
                      	 urlFoto = partes[3].toString();
-                     	 System.out.println(partes[0]);
-                    	 System.out.println(urlFoto);
+                     	 System.out.println(partes[3]);
                       }
                 }
             }
@@ -182,7 +181,6 @@ public class FXMLDocumentController implements Initializable {
                     for (int i = 0; i <= linha.length - 1; i++) {
                         String[] partes = linha[i].split(",");
                         if (partes[1].equals(login.getText()) && partes[2].equals(senha.getText())) {
-                        	System.out.println(temFoto());
                            if(temFoto()) {
                         	   writer.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + foto() + "," + "-"  + "," + "^");
                            }else {

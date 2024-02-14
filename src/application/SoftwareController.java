@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -77,55 +80,37 @@ public class SoftwareController implements Initializable{
 		}
 	}
 	
-	public void mudarIMG() {
-		FileChooser fileChooser = new FileChooser();
-	    fileChooser.setTitle("Escolha uma imagem");
-	    fileChooser.getExtensionFilters().addAll(
-	            new FileChooser.ExtensionFilter("Imagens", "*.png", "*.jpg", "*.jpeg", "*.gif")
-	    );
+	private void atualizarArquivosTemporarios(String urlFoto) throws IOException {
+	    try (BufferedReader reader = new BufferedReader(new FileReader(tempFile));
+	         BufferedWriter writer = new BufferedWriter(new FileWriter("tempFileTemp.txt"));
+	         BufferedWriter writerU = new BufferedWriter(new FileWriter("usuarioFile.txt"))) {
 
-	    // Obter o arquivo selecionado
-	    Stage stage = new Stage();
-	    java.io.File file = fileChooser.showOpenDialog(stage);
-
-	    if (file != null) {
-	        // Carregar a nova imagem
-	        image = new Image(file.toURI().toString());
-	        imgPerfil.setImage(image);
-
-	        System.out.println(file.toURI().toString());
-
-	        try (BufferedReader reader = new BufferedReader(new FileReader(tempFile));
-	             BufferedWriter writer = new BufferedWriter(new FileWriter("tempFileTemp.txt"));
-	        		BufferedWriter writerU = new BufferedWriter(new FileWriter("usuarioFile.txt"))) {
-
-	            String word;
-	            while ((word = reader.readLine()) != null) {
-	                String[] linha = word.split("^");
-	                for (int i = 0; i <= linha.length - 1; i++) {
-	                    String[] partes = linha[i].split(",");
-	                    if (partes.length >= 4 && partes[4].equals("-")) {
-	                        writer.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + file.toURI().toString() + "," + "-"+ "," + "^");
-	                        writerU.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + file.toURI().toString() + "," + "^");
-	                    }else {
-	                    	writer.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + foto() + "," + "x" + "," + "^");
-	                        writerU.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + foto() + "," + "^");
-	                    }
-	                    writer.newLine();
-	                    writerU.newLine();
+	        String word;
+	        while ((word = reader.readLine()) != null) {
+	            String[] linha = word.split("^");
+	            for (int i = 0; i <= linha.length - 1; i++) {
+	                String[] partes = linha[i].split(",");
+	                if (partes.length >= 4 && partes[4].equals("-")) {
+	                    writer.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + urlFoto + "," + "-" + "," + "^");
+	                    writerU.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + urlFoto + "," + "^");
+	                } else {
+	                    writer.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + foto() + "," + "x" + "," + "^");
+	                    writerU.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + foto() + "," + "^");
 	                }
+	                writer.newLine();
+	                writerU.newLine();
 	            }
-	        } catch (FileNotFoundException e) {
-	            e.printStackTrace();
-	        } catch (IOException e) {
-	            e.printStackTrace();
 	        }
 
+	        // Fechar os escritores antes de renomear
+	        writer.close();
+	        writerU.close();
+	        
 	        java.io.File userFile = new java.io.File("usuarios.txt");
 	        if (userFile.exists()) {
 	        	userFile.delete();
 	        }
-
+	        
 	        // Renomear o arquivo temporário para o original
 	        java.io.File userFileTemp = new java.io.File("usuarioFile.txt");
 	        userFileTemp.renameTo(userFile);
@@ -144,8 +129,54 @@ public class SoftwareController implements Initializable{
 	        if (tempFileTemp.exists()) {
 	        	tempFileTemp.delete();
 	        }
+
+	    } catch (FileNotFoundException e) {
+	        e.printStackTrace();
 	    }
-	}	
+	}
+	
+	private void copiarImagem(Path origem, String caminhoDestino) throws IOException {
+	    Path destino = Path.of(caminhoDestino);
+
+	    // Certifica-se de que a pasta de destino existe, se não, cria
+	    if (!Files.exists(destino.getParent())) {
+	        Files.createDirectories(destino.getParent());
+	    }
+
+	    // Copia a imagem para a pasta de destino
+	    Files.copy(origem, destino, StandardCopyOption.REPLACE_EXISTING);
+	}
+	
+	public void mudarIMG() {
+	    FileChooser fileChooser = new FileChooser();
+	    fileChooser.setTitle("Escolha uma imagem");
+	    fileChooser.getExtensionFilters().addAll(
+	            new FileChooser.ExtensionFilter("Imagens", "*.png", "*.jpg", "*.jpeg", "*.gif")
+	    );
+
+	    // Obter o arquivo selecionado
+	    Stage stage = new Stage();
+	    java.io.File file = fileChooser.showOpenDialog(stage);
+
+	    if (file != null) {
+	        try {
+	            Path destino = Path.of("src", "img", file.getName());
+	            copiarImagem(file.toPath(), destino.toString());
+
+	            urlFoto = "/img/" + file.getName();
+
+	            image = new Image(file.toURI().toString());
+		        imgPerfil.setImage(image);
+		        
+	            System.out.println(urlFoto);
+
+	            atualizarArquivosTemporarios(urlFoto);
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
 	
 	 public void close() {
 	        System.exit(0);
