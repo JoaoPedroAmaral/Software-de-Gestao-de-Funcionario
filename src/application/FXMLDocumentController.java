@@ -180,6 +180,7 @@ public class FXMLDocumentController implements Initializable {
                     String[] linha = word.split("^");
                     for (int i = 0; i <= linha.length - 1; i++) {
                         String[] partes = linha[i].split(",");
+                        System.out.println(temFoto());
                         if (partes[1].equals(login.getText()) && partes[2].equals(senha.getText())) {
                            if(temFoto()) {
                         	   writer.write(partes[0] + "," + partes[1] + "," + partes[2] + "," + foto() + "," + "-"  + "," + "^");

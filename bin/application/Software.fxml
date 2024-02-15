@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,7 +16,10 @@
 			<children>
 				<AnchorPane layoutY="33.0" prefHeight="367.0" prefWidth="219.0" style="-fx-background-color: #3885ff;" stylesheets="@Background.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="33.0">
 					<children>
-                  <ImageView fx:id="imgPerfil" fitHeight="107.0" fitWidth="139.0" layoutX="40.0" layoutY="4.0" pickOnBounds="true" styleClass="img" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="4.0" />
+                  <ImageView fx:id="imgPerfil" fitHeight="107.0" fitWidth="139.0" layoutX="40.0" layoutY="4.0" pickOnBounds="true" styleClass="img" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="4.0">
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport></ImageView>
                   <Circle fx:id="mudarIMG" fill="DODGERBLUE" layoutX="110.0" layoutY="61.0" onMouseClicked="#mudarIMG" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" style="-fx-fill: transparent;" styleClass="circleIMG" />
 						<Text fx:id="namePsicologo" layoutX="54.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="110.97454833984375" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.02545166015625" AnchorPane.topAnchor="116.05078125">
                      <font>

@@ -64,7 +64,6 @@ public class SoftwareController implements Initializable{
                      String[] partes = linha[i].split(",");
                      if(partes[4].equals("-")) {
                     	 urlFoto = partes[3].toString();
-                    	 System.out.println(partes[0]);
                      }
                  }
              }
@@ -178,6 +177,27 @@ public class SoftwareController implements Initializable{
 	    }
 	}
 	
+	private void title() {
+		try (BufferedReader reader = new BufferedReader(new FileReader(tempFile))){
+			 String word;
+            while ((word = reader.readLine()) != null) {
+                String[] linha = word.split("^");
+                for (int i = 0; i <= linha.length - 1; i++) {
+                    String[] partes = linha[i].split(",");
+                    if(partes[4].equals("-")) {
+                   	 namePsicologo.setText("Olá! " + partes[0] );
+                    }
+                }
+            }
+		 } catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	 public void close() {
 	        System.exit(0);
 	    }
@@ -219,7 +239,8 @@ public class SoftwareController implements Initializable{
 		circle.setTranslateY(57.0);
 		imgPerfil.setClip(circle);
 		imgPerfil.setPreserveRatio(false);
-	
+		
+		title();
 	}
 
 }
