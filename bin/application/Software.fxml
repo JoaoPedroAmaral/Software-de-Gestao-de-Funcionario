@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,24 +12,91 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SoftwareController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SoftwareController">
 	<children>
 		<AnchorPane prefHeight="400.0" prefWidth="146.0">
 			<children>
-				<AnchorPane layoutY="33.0" prefHeight="367.0" prefWidth="219.0" style="-fx-background-color: #3885ff;" stylesheets="@Background.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="33.0">
+				<AnchorPane layoutY="33.0" prefHeight="367.0" prefWidth="219.0" style="-fx-background-color: #31247e;" stylesheets="@Background.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="33.0">
 					<children>
                   <ImageView fx:id="imgPerfil" fitHeight="107.0" fitWidth="139.0" layoutX="40.0" layoutY="4.0" pickOnBounds="true" styleClass="img" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="4.0">
                      <viewport>
                         <Rectangle2D />
                      </viewport></ImageView>
-                  <Circle fx:id="mudarIMG" fill="DODGERBLUE" layoutX="110.0" layoutY="61.0" onMouseClicked="#mudarIMG" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" style="-fx-fill: transparent;" styleClass="circleIMG" />
-						<Text fx:id="namePsicologo" layoutX="54.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="110.97454833984375" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.02545166015625" AnchorPane.topAnchor="116.05078125">
+                  <Circle fill="DODGERBLUE" layoutX="110.0" layoutY="61.0" onMouseClicked="#mudarIMG" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" style="-fx-fill: transparent;" styleClass="circleIMG" />
+						<Text fx:id="namePsicologo" layoutX="7.0" layoutY="139.58203125" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="207.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="118.0">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font></Text>
+                  <AnchorPane layoutX="11.0" layoutY="181.0" prefHeight="311.0" prefWidth="200.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="189.0">
+                     <children>
+                        <Button fx:id="pacientesBTN" alignment="CENTER" graphicTextGap="10.0" layoutY="143.0" mnemonicParsing="false" onAction="#pacientesBTN" prefHeight="48.0" prefWidth="200.0" styleClass="pacienteBTN" stylesheets="@button.css" text="Pacientes" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/pacient.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="configBTN" alignment="CENTER" graphicTextGap="10.0" layoutY="249.0" mnemonicParsing="false" onAction="#configBTN" prefHeight="48.0" prefWidth="200.0" styleClass="pacienteBTN" stylesheets="@button.css" text="Configurações" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/config.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="anotacoesBTN" alignment="CENTER" graphicTextGap="10.0" layoutY="196.0" mnemonicParsing="false" onAction="#anotacoesBTN" prefHeight="48.0" prefWidth="200.0" styleClass="pacienteBTN" stylesheets="@button.css" text="Anotações" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/note.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="ajudaBTN" alignment="CENTER" graphicTextGap="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#ajudaBTN" prefHeight="48.0" prefWidth="200.0" styleClass="pacienteBTN" stylesheets="@button.css" text="Ajuda" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/help.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="inicioBTN" alignment="CENTER" graphicTextGap="10.0" layoutY="37.0" mnemonicParsing="false" onAction="#inicioBTN" prefHeight="48.0" prefWidth="200.0" styleClass="pacienteBTN" stylesheets="@button.css" text="Inicio" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/inicio.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <Text layoutX="81.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version 1.0" AnchorPane.bottomAnchor="6.98828125" />
 					</children>
 				</AnchorPane>
-				<AnchorPane layoutX="219.0" layoutY="33.0" prefHeight="367.0" prefWidth="381.0" style="-fx-background-color: #dee4fa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
+				<AnchorPane fx:id="inicioArea" layoutX="219.0" layoutY="32.0" prefHeight="633.0" prefWidth="1014.0" style="visibility: false;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+               <children>
+                  <Text layoutX="269.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INICIO" />
+               </children></AnchorPane>
 				<AnchorPane fx:id="barSoft" onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" prefHeight="33.0" prefWidth="600.0" styleClass="titleBar" stylesheets="@button.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
 					<children>
 						<Button fx:id="close" layoutX="542.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="43.0" styleClass="close" stylesheets="@button.css" text="X" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
@@ -60,6 +129,70 @@
 						</ImageView>
 					</children>
 				</AnchorPane>
+            <AnchorPane fx:id="ajudaArea" layoutX="219.0" layoutY="33.0" prefHeight="667.0" prefWidth="1061.0" style="visibility: true;" stylesheets="@Pages.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0">
+               <children>
+                  <Text fill="#31247e" layoutX="358.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleHelp" text="AJUDA" textAlignment="CENTER" wrappingWidth="345.0">
+                     <font>
+                        <Font size="64.0" />
+                     </font></Text>
+                  <ScrollPane cache="true" layoutY="109.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="563.0" prefWidth="1061.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
+                     <cursor>
+                        <Cursor fx:constant="DISAPPEAR" />
+                     </cursor>
+                     <content>
+                        <AnchorPane prefHeight="557.0" prefWidth="1039.0">
+                           <children>
+                              <Text fill="#31247e" layoutX="14.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PsiMind" wrappingWidth="115.13671875">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&#9;PsiMind é um projeto desenvolvido para optmizar o tratamento entre psicologo e paciente, sendo o mais acessivel possivel e entregando o que ele promete ser. Devido está em etapa de teste muito do seu potencial e performace acaba sendo limitado ou nem revelado, pois essa é apenas uma versão de teste/simples para &quot;quebrar o galho&quot; daqueles que realmente precisam,. Sua principal função é definir metas, objetivos e gerar graficos de processo conforme seus pacientes vão evoluindo." wrappingWidth="1017.5458984375">
+                                 <font>
+                                    <Font name="Lucida Sans Unicode" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#31247e" layoutX="19.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistema de login" wrappingWidth="200.0">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="15.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&#9;O sistema inteiro é open source, podendo ser modificado, como este é um teste aberto para todos os usuarios poderem desfrutar do esqueleto do nosso futuro projeto o sistema de login não foi focado para ser seguro, apenas no teste.&#10;&#9;Utilizando blocos de nota, Temp e Usuario, foi criado um simples sistema capaz de realizar cadastros, logins, identificador de areas vazias e validações de logins e senhas." textAlignment="JUSTIFY" wrappingWidth="1015.0">
+                                 <font>
+                                    <Font name="Lucida Sans Unicode" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#31247e" layoutX="14.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Barra Lateral" wrappingWidth="200.0">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="10.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&#9;A barra lateral é seu menu principal, que o levará desde mudar seu icone apenas clicando na sua foto, até o gerenciamento de pacientes. Para você os botões mais importantes para seu trabalho nesse modo teste será 2, pacientes e anotações, mas ainda falta varios botões que podem lhe interessar.&#10;&#9;INICIO: Lá será uma aba de facil acesso, atualmente serve apenas como uma aba de apresentação, justamente pela falta de funções, devido ser um projeto rapido e criado por uma unica pessoa.&#10;&#9;AJUDA: Aqui será onde você achará as explicações de como o projeto funciona, contatos para feedback e futuramente um link para uma vaquinha do melhoramento do projeto.&#10;&#9;PACIENTES: Usado para o gerenciamento do projeto" textAlignment="JUSTIFY" wrappingWidth="1015.0">
+                                 <font>
+                                    <Font name="Lucida Sans Unicode" size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pacientesArea" layoutX="219.0" layoutY="33.0" prefHeight="667.0" prefWidth="1061.0" style="visibility: false;">
+               <children>
+                  <Text layoutX="269.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PACIENTES" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="anotacoesArea" layoutX="219.0" layoutY="33.0" prefHeight="667.0" prefWidth="1061.0" style="visibility: false;">
+               <children>
+                  <Text layoutX="269.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ANOTAÇÕES" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="configArea" layoutX="219.0" layoutY="33.0" prefHeight="667.0" prefWidth="1061.0" style="visibility: false;">
+               <children>
+                  <Text layoutX="269.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURAÇÕES" />
+               </children>
+            </AnchorPane>
 			</children>
 		</AnchorPane>
 	</children>

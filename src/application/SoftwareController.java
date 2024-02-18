@@ -45,6 +45,36 @@ public class SoftwareController implements Initializable{
 	@FXML
 	private Text namePsicologo;
 	
+	@FXML
+	private Button inicioBTN;
+	
+	@FXML
+	private Button ajudaBTN;
+	
+	@FXML
+	private Button pracientesBTN;
+	
+	@FXML
+	private Button anotacoesBTN;
+	
+	@FXML
+	private Button configBTN;
+	
+	@FXML
+	private AnchorPane inicioArea;
+	
+	@FXML
+	private AnchorPane ajudaArea;
+	
+	@FXML
+	private AnchorPane pacientesArea;
+	
+	@FXML
+	private AnchorPane anotacoesArea;
+	
+	@FXML
+	private AnchorPane configArea;
+	
 	private double x = 0;
 	private double y = 0;	
 	
@@ -231,14 +261,62 @@ public class SoftwareController implements Initializable{
         
     }
     
+    
+    public void inicioBTN () {
+    	inicioArea.setVisible(true);
+    	ajudaArea.setVisible(false);
+    	pacientesArea.setVisible(false);
+    	anotacoesArea.setVisible(false);
+    	configArea.setVisible(false);
+    	System.out.println("inicio");
+    }
+    
+    public void ajudaBTN () {
+    	ajudaArea.setVisible(true);
+    	inicioArea.setVisible(false);
+    	pacientesArea.setVisible(false);
+    	anotacoesArea.setVisible(false);
+    	configArea.setVisible(false);
+    	System.out.println("ajuda");
+    }
+    
+    public void pacientesBTN () {
+    	pacientesArea.setVisible(true);
+    	inicioArea.setVisible(false);
+    	ajudaArea.setVisible(false);
+    	anotacoesArea.setVisible(false);
+    	configArea.setVisible(false);
+    	System.out.println("paciente");
+    }
+    
+    public void anotacoesBTN () {
+    	anotacoesArea.setVisible(true);
+    	inicioArea.setVisible(false);
+    	ajudaArea.setVisible(false);
+    	pacientesArea.setVisible(false);
+    	configArea.setVisible(false);
+    	System.out.println("anotações");
+    }
+    
+    public void configBTN () {
+    	configArea.setVisible(true);
+    	inicioArea.setVisible(false);
+    	ajudaArea.setVisible(false);
+    	pacientesArea.setVisible(false);
+    	anotacoesArea.setVisible(false);
+    	System.out.println("clickado");
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		imgPerfil.setImage(image);
-		Circle circle = new Circle(50.0);
+		Circle circle = new Circle(49.0);
 		circle.setTranslateX(70.0);
-		circle.setTranslateY(57.0);
+		circle.setTranslateY(56.0);
 		imgPerfil.setClip(circle);
 		imgPerfil.setPreserveRatio(false);
+		
+		
 		
 		title();
 	}
